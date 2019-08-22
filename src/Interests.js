@@ -4,13 +4,21 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import { NavLink } from 'react-router-dom';
 
-function Interests() {
+function Interests(props) {
+
+  function submitForm(e) {
+    e.preventDefault()
+    props.history.push('/skills');
+    
+  }
+
   return(
     <div className="container-fluid">
       <ProgressBar now={50} />
         <h1>Interests (you want to learn)</h1>
-        <Form>
+        <Form onSubmit={ submitForm} >
         <fieldset>
           <Form.Group as={Row}>
             <Form.Label as="legend" column sm={2}>
@@ -61,6 +69,7 @@ function Interests() {
             <Button type="submit">Go to Skills</Button>
           </Col>
         </Form.Group>
+        <NavLink to="/Skills"> Go to Skills </NavLink>
       </Form>
     </div>
   )
